@@ -1,5 +1,9 @@
 resource "aws_route53_zone" "atihita_com" {
   name = "atihita.com"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "aws_route53_record" "atihita_com_mx" {
@@ -14,6 +18,10 @@ resource "aws_route53_record" "atihita_com_mx" {
     "30 ASPMX2.GOOGLEMAIL.COM.",
     "30 ASPMX3.GOOGLEMAIL.COM."
   ]
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "aws_route53_record" "atihita_com_cname_mail" {
@@ -22,8 +30,16 @@ resource "aws_route53_record" "atihita_com_cname_mail" {
   type    = "CNAME"
   ttl     = 60
   records = ["ghs.google.com."]
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "aws_route53_zone" "rajiv_sg" {
   name = "rajiv.sg"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
